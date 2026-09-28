@@ -1,0 +1,51 @@
+# Keeps real data out of your commits. Copy this into your own project, or add
+# its contents to the end of a .gitignore you already have.
+#
+# These rules are about LOCATION, not filenames. A filename cannot tell you
+# whether a real person is identifiable, so the folders below are the ones you
+# designate, and everything in them stays out. DATA-GUARD.md explains how to
+# make those same folders unreadable to the agent, which git cannot do.
+
+# The designated folders, at any depth. Written with a trailing /* rather than a
+# bare / because git cannot re-include a file whose parent directory is
+# excluded, and the exception at the bottom of this file needs to work.
+sensitive/*
+**/sensitive/*
+phi/*
+**/phi/*
+pii/*
+**/pii/*
+
+# One narrow exception, listed after the rules it overrides so that it wins. The
+# fake extract ships because it is what proves the guard fires, and it is
+# engineered to be obviously fake. Keep this exception exactly this specific.
+!sensitive/FAKE-*.csv
+
+# Local environment
+.env
+.env.*
+.DS_Store
+node_modules/
+
+# -----------------------------------------------------------------------------
+# Deliberately NOT enabled, because they would bite a normal project.
+#
+# A blunt rule against anything data-shaped is good defence where no such file
+# is ever legitimate, and quietly destructive where one is. A project with test
+# fixtures in CSV, or a data/ folder of public reference tables, would find them
+# silently uncommitted and hard to diagnose.
+#
+# So: uncomment any line below that is true of YOUR project, and leave the rest.
+# If you do uncomment the CSV line, add an exception for any fixture you need,
+# the way the fake extract above is handled.
+#
+# *.csv
+# *.xlsx
+# *.xls
+# *.mdb
+# *.accdb
+# data/
+# extracts/
+# *-internal.md
+# *-confidential.md
+# *-transcript.md
