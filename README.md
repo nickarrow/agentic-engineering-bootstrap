@@ -357,6 +357,25 @@ deliberate: a fork of a public repository is always public and cannot be made pr
 hear about new versions, press **Watch** on this repository, choose **Custom** and tick **Releases**. The version line at
 the top says what you hold, and `starter/NOTICE.md` repeats this in your own repository so a colleague can find it.
 
+### What has not been tested
+
+Most of what these files claim was checked by running it. Four things were not, and you are more likely than I am to hit
+the first two.
+
+The Windows setup path. Every path, menu and command for Windows in this file was written from documentation and has
+never been run on a Windows machine. If you are on Windows and something here does not work, that is a defect in this
+repository and not in your machine.
+
+Merging the deny rule into a permissions file that already has rules in it. `starter/DATA-GUARD.md` routes that through
+the agent and then has you count the rules afterwards, which is the right shape and has never been done by a person.
+Count them.
+
+The `writing-code` skill has never been prompted, so if it does not load when you start writing code, that is worth
+reporting rather than working around.
+
+Nobody who did not write this has been through it end to end. If you are the first and you get stuck, that is the most
+useful thing anybody could tell me.
+
 Problems go in [an issue](https://github.com/nickarrow/agentic-engineering-bootstrap/issues). If something here is
 wrong, that is worth more to me than if it works. `CONTRIBUTING.md` covers sending a fix, and adding a domain layer for
 your own field.
