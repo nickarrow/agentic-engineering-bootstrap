@@ -71,3 +71,19 @@ this means the rules are not reaching it. Ask what rules apply in this repositor
 start a fresh session.
 
 If it invents a file or a function that does not exist, that is worth knowing early, and it is why step four exists.
+
+## When the next job is changing the system
+
+Documenting a system is often the step before changing it. Before the first change:
+
+- Ask for a short "This repository" section in `AGENTS.md`: what the project is, how to build and test it, and where
+  things live.
+- Have the document from step three saved as `docs/design.md`, the project design document, with each claim marked
+  Current (confirmed by reading or running the code) or Inferred (a guess). The change itself becomes the first epic,
+  with a design document of its own in `docs/epics/0001-<short-name>/design.md` saying what will be different.
+- If an old planning document exists, retire it, and write a decision record saying where each of its claims went.
+- Have the answers people already rely on pinned with tests before any logic changes. The agent writes the tests. You
+  name the answers that must not move.
+
+Then follow steps three to six of `missions/build-something-you-need.md`, with the delivery plan in the same epic
+folder.

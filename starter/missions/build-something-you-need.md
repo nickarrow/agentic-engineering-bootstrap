@@ -31,16 +31,17 @@ something, say so out loud in the conversation, then read the four rules under "
 ## Two. Get the design document
 
 > Take this whole conversation, the research, the decisions and the things we ruled out, and write a design document we
-> can anchor this project to. Mark anything you inferred rather than confirmed.
+> can anchor this project to, saved as `docs/design.md`. Mark anything you inferred rather than confirmed.
 
 Read it. It should describe the thing you meant. If it does not, say what is wrong and have it fixed now, while fixing
 it is a paragraph rather than a refactor.
 
 ## Three. Get the delivery plan, separately
 
-> Now a separate document, a delivery plan: the order we build this in. Coarse increments, each one leaving something
-> that works and is better than before. The first one should be thin and touch every layer. Put a checkbox against each
-> increment so I can see where we are.
+> Now a separate document, a delivery plan for the first epic, saved as
+> `docs/epics/0001-first-version/delivery-plan.md`: the order we build this in. Coarse increments, each one leaving
+> something that works and is better than before. The first one should be thin and touch every layer. Put a checkbox
+> against each increment so I can see where we are.
 
 Two documents on purpose. The first says what and why, the second says in what sequence and how far along it is. A task
 list is a bad place to keep an assumption that has gone stale.
@@ -125,8 +126,8 @@ window.
 ## If it goes wrong
 
 It starts writing code despite being told not to. Stop it and say so. `AGENTS.md` tells it to change only what it was
-asked to change and not to scaffold before the problem is understood, so this means the rules are not reaching it. Run
-ask what rules apply in this repository, and if two lists do not come back, start a fresh session.
+asked to change and not to scaffold before the problem is understood, so this means the rules are not reaching it. Ask
+what rules apply in this repository, and if two lists do not come back, start a fresh session.
 
 The design document is vague and agreeable. Usually that means the conversation in step one was too short. Go back and
 push on the specifics, especially what the thing must not do.

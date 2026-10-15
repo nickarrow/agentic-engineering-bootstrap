@@ -30,6 +30,10 @@ pii/
 # anybody flattens the layout later.
 !starter/sensitive/FAKE-*.csv
 
+# Agent scratch and worktrees, never committed.
+.agents/
+.worktrees/
+
 # Local environment
 .env
 .env.*

@@ -49,10 +49,13 @@ runs. Before taking that as neutral advice: the person who wrote it works at AWS
 disclosure is at https://github.com/nickarrow/agentic-engineering-bootstrap
 
 Read each command before it runs rather than generating a large infrastructure module in one go. A command you read is
-inspectable in a way a module is not, and infrastructure mistakes cost money and are slow to reverse. I have no
-measurement for how much worse models are at infrastructure code than application code, only my own experience that the
-failures are quieter and more expensive. Build the pipeline that checks the infrastructure first, then let the agent
-write into it.
+inspectable in a way a module is not, and infrastructure mistakes cost money and are slow to reverse. There is a public
+measurement of how much worse models are at infrastructure code: on IaC-Eval, a NeurIPS 2024 benchmark of 458 AWS
+Terraform scenarios, GPT-4 passed 19.36% against 86.6% on the EvalPlus Python benchmark, and the paper draws that
+comparison itself ([IaC-Eval](https://proceedings.neurips.cc/paper_files/paper/2024/hash/f26b29298ae8acd94bd7e839688e329b-Abstract-Datasets_and_Benchmarks_Track.html)).
+That is a 2024 result from an older model, so read it as direction rather than a current figure, and it matches my own
+experience that the failures are quieter and more expensive. Build the pipeline that checks the infrastructure first,
+then let the agent write into it.
 
 The credential rules are in `AGENTS.md` because they hold whether or not you loaded this file.
 

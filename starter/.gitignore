@@ -21,9 +21,16 @@ pii/*
 # engineered to be obviously fake. Keep this exception exactly this specific.
 !sensitive/FAKE-*.csv
 
+# Agent scratch, and git worktrees if an agent makes them here. One folder per
+# piece of work under .agents/ is scratch and never the record. Neither belongs
+# in history.
+.agents/
+.worktrees/
+
 # Local environment
 .env
 .env.*
+!.env.example
 .DS_Store
 node_modules/
 

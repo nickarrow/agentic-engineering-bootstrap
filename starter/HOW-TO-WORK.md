@@ -1,7 +1,7 @@
 # How to work
 
 One person's practice, about a year in, self-taught. The evidence behind the parts that have evidence is listed at the
-bottom. Read this at the start of hour two, not during setup. Thirteen minutes.
+bottom. Read this at the start of hour two, not during setup. Fifteen minutes.
 
 The single most useful habit is the one nobody tells you: when you do not know a word or a concept, ask. "What is a
 constant." "What does a design system mean here." "Why would I want a branch." It is faster than looking it up and it
@@ -32,8 +32,14 @@ Instead, ask for the writing up:
 
 Then ask for a delivery plan as a separate document, in coarse increments, each one leaving something that works. Two
 documents, because the first says what and why and the second says in what sequence. Keeping them apart is what stops a
-task list becoming the place a stale assumption hides. The delivery plan is also where progress lives, so there is one
-place to look to find out where the work is.
+task list becoming the place a stale assumption hides. The delivery plan is also where progress lives.
+
+The design document goes in `docs/design.md`, and the first plan goes in the first epic's folder,
+`docs/epics/0001-first-version/`. An epic is one body of work toward a goal you can say in a sentence. Every later one
+gets a numbered folder and a plan of its own, while `docs/design.md` stays the account of what the project is now.
+
+That layout helps a team as much as it helps one person. Several people can take different epics, or different
+increments of one, against the same design document and one shared list of decisions.
 
 A third kind of document arrives later, one at a time: a decision record, for a choice made along the way that changes
 something already written down. Do not create them up front. The `project-docs` skill has the shape of all three and
@@ -72,7 +78,10 @@ an understanding of the system. If it finds a defect while looking, have it writ
 
 Then ask what it could not work out. That answer is usually the most useful thing you get all day.
 
-Then give it the task, and go back to the conversation-first pattern above for whatever the task is.
+Then give it the task, and go back to the conversation-first pattern above for whatever the task is. I treat a new
+piece of work after a pause like a brand new project: talk it through, have it research, and once the conversation has
+settled what the work is, it becomes a new epic with its own folder and delivery plan. A fix that one branch can do
+needs no epic.
 
 `missions/document-a-system.md` walks this one.
 
@@ -89,11 +98,18 @@ When the interface is wrong, take a screenshot and paste it into the chat. Descr
 and the agent sees it immediately in a picture. This works in a cloud console too when you do not know what a field
 wants.
 
-Let it write commit messages and read them before committing. Let it make branches and open pull requests. It is good
-at all of that.
+Let it write commit messages and read them before committing. Let it make branches and merge them, and open pull
+requests where a team uses them. It is good at all of that.
 
-One feature per pull request. Die on that hill. Get into the habit of piling six features into one and nobody will ever
-review your work properly, including you in six months.
+One increment per branch. Die on that hill. Get into the habit of piling six things into one and nobody will ever
+review your work properly, including you in six months. In the middle of a good run you will want to start the next
+thing on the branch you are on, because that is the velocity this gets you. That is the moment the rule is for. Stop,
+and ask for a new branch. It costs seconds.
+
+A worktree earns its keep in two cases: two agents editing the same files at once, or your own folder has to stay on
+the main branch through a long run. Otherwise it is overkill. It hides the work in a folder you never open. And a
+session opened on your project folder does not get the skills that live only in the worktree, and may not have the
+worktree's `AGENTS.md` from its first message. It has been seen to arrive once a file in that folder was read.
 
 Watch file sizes. Two to three hundred lines is what a person will actually read, and the `writing-code` skill sets
 that target. Agents append rather than refactor, so files grow quietly, and by the time one is nine hundred lines the
@@ -118,9 +134,10 @@ it was asked to change, so this happening means the rules are not reaching it. A
 and if two lists do not come back, start a fresh session.
 
 You inherit something vibe-coded and unreadable. Sometimes the answer is a new repository with the old one as a
-reference, carrying only what is currently true. That is fine for a prototype. It is not free for anything operational,
-where whatever records retention schedule governs your organisation governs the old repository too, and abandoning it is
-not the same as being allowed to delete it.
+reference, carrying only what is currently true. Keep that reference outside the folder you have open in Kiro, or its
+`AGENTS.md` can join your rules. That is fine for a prototype. It is not free for anything operational, where whatever
+records retention schedule governs your organisation governs the old repository too, and abandoning it is not the same
+as being allowed to delete it.
 
 ## What not to do
 

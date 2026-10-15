@@ -32,6 +32,13 @@ copying it is the fastest start. Either way the frame is the same and only the s
 - Which citation every encoded rule has to carry
 - Which authority a reader should cite instead of citing your file
 
+There is a second shape, for a field where nobody can be denied anything and the risk is a wrong answer rather than an
+unjust one: a sport's scoring, a pricing model, a simulation, a calculator. The frame there is lighter. Give each
+encoded rule its source: the governing body's article and clause, or the data provider's field. List the quirks of the
+data source you depend on. Mark every item as verified, with the method and the date, or as unverified and taken on
+trust. The point is the same as the benefits frame: an agent should be able to tell a checked rule from a guess without
+leaving the file.
+
 Two rules on the frontmatter. The `name` must match the folder name exactly, and the `description` is what decides
 whether the skill loads at all, so it needs the words somebody would actually use when describing that work. A
 description that only says what the skill contains will never activate.
@@ -43,9 +50,9 @@ loosen them, and nothing outside `starter/.kiro/skills/` may depend on any domai
 ## Where things live
 
 One practical note before anything else. Kiro looks for `.kiro/skills/` at the top of whatever folder you opened, and it
-does not find skills in a subfolder. So working on this repository from the top level gets you `AGENTS.md`, which Kiro
-does discover in subdirectories, and none of the five skills. `/review` will not be available while you edit the files
-that describe it.
+does not find skills in a subfolder. So working on this repository from the top level gets you none of the five
+skills, and `starter/AGENTS.md` may not be in the session from its first message. It has been seen to arrive once a file
+in `starter/` was read. `/review` will not be available while you edit the files that describe it.
 
 If you are working on the payload, open `starter/` as the workspace. If you are working on this repository's own
 paperwork, the top level is fine and you are doing it without the tooling. That is a real cost of the two-level layout
@@ -75,7 +82,7 @@ Commit subjects use a [Conventional Commits](https://www.conventionalcommits.org
 `refactor:`. The commit body is where the reasoning goes, and a long body is welcome. Several commits in this history
 are longer than the change they describe, on purpose.
 
-Follow the writing rules in `starter/AGENTS.md`. No em-dashes, short flat sentences, admissions without a clause that
+Follow the writing rules in `starter/AGENTS.md`. No em-dashes, varied sentence length, admissions without a clause that
 rescues them. If your addition reads as though a model wrote it, it will get sent back, and that applies to mine too.
 
 Say what you verified and what you did not. A claim in this repository is expected to name its source or admit it has

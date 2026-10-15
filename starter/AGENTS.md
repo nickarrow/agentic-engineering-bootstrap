@@ -3,12 +3,15 @@
 Rules for any AI agent working in this repository. Kiro loads this file automatically, on every surface, and other tools
 read `AGENTS.md` too, which is why the rules live here rather than somewhere tool-specific.
 
-One exception. If somebody has selected a custom agent, Kiro does not include steering files unless that
-agent's configuration asks for them, so this file and the skills both go silent. If somebody asks what rules apply here
-and gets nothing back, a custom agent is the first thing to suspect.
+Two things decide whether this file reaches a session. Kiro's documentation says a custom agent loads steering and
+skills only when its configuration asks for them, so when the rules go silent, suspect a custom agent first. And an
+`AGENTS.md` in a subfolder, such as a worktree or a copy of another repository, may not be in the session from its first
+message. It has been seen to arrive once a file in that folder was read.
 
 This file holds what is true in every session. Anything that only matters sometimes is a skill under `.kiro/skills/`,
-which loads when it is relevant.
+which loads when it is relevant. Counts and dated notes about this repository's own state stay out of this file and the
+skills, because every session reads them as current. How many files there are, or what last week's test showed, belongs
+in the delivery plan or a decision record. A figure or a date that comes with a cited source is fine.
 
 ## What you may look at
 
@@ -66,23 +69,37 @@ Talk before you build. Have a conversation first, research it, look for prior ar
 is understood, and do not offer to.
 
 Change only what you were asked to change. If you spot something else worth doing, say so and wait. Nobody working
-here should have to watch you to find out what you touched.
+here should have to watch you to find out what you touched. Fixing what your own change made untrue is part of the
+change: if it renames a file the docs name, or alters behaviour a skill describes, correct that too.
 
 Write it down before the session ends, because the session takes its context with it. Three documents do three jobs:
 
-- A **design document** says what is being built, why, and what has to be true. One document, argued with and revised.
-- A **delivery plan** says in what order, and carries the record of what is done. Separate from the design so a stale
-  assumption cannot hide inside a task list.
+- A **design document** says what is being built, why, and what has to be true. The project's, `docs/design.md`, is
+  argued with, revised and kept true.
+- A **delivery plan** says in what order, and carries the record of what is done. One per epic, separate from the
+  design so a stale assumption cannot hide inside a task list.
 - **Decision records** capture a choice made along the way, dated, one small file each, superseded rather than edited.
 
-Do not invent other names for these. Do not split the design document to make it shorter.
+Each body of work, an epic, gets a numbered folder under `docs/epics/` for its delivery plan and any design document
+of its own. Do not invent other names for these. Do not split the design document to make it shorter.
+
+Files a session makes for its own work (briefs, reviewer reports, scratch copies, scripts) go in one folder per piece
+of work under `.agents/`, which git ignores. They are scratch, not the record. When the work is done, whatever matters
+moves into the delivery plan, a decision record, a test or a commit message; then delete that work's own folder, not
+`.agents/` itself, and say what you deleted. Never delete anything the person put there. Size the review to the change:
+the full fan-out for a design, a plan, or a change to what the software does or says; for a refactor that changes
+neither, the do-it reviewer and the tests.
 
 Review before shipping anything substantial. Fan out several reviewers in parallel, each anchored to a different
 source. Several agents checking one shared opinion is not review. Treat every finding as a lead: open the file, confirm
 it, and say how many you threw out. When reviewing, report rather than fix. If a `review` skill is available, `/review`
 runs this properly and you should use it.
 
-Show a commit message before committing it, and put one feature in a pull request rather than six.
+For one person the git workflow is light. One branch per increment or per fix, in the checkout that is already open,
+not a worktree. The agent runs the git steps: branching, committing, merging. The person's part is to say when, and they
+can merge in the editor if they would rather. Show the commit message before committing. Push only when asked. No pull
+request for your own work. A team that reviews through pull requests says so here. Contributions from outside a public
+repository still arrive as pull requests.
 
 ## How to write it down
 
@@ -130,6 +147,10 @@ of you from the start of the session. The bodies are not, and they do not arrive
 So at the start of a piece of work, read the available skill descriptions and load the ones that apply. Do not wait to be
 asked for them and do not assume it has happened already. If the work turns toward something a skill covers, load it
 then. Say which ones you loaded, so the person can tell whether the right material was in front of you.
+
+If the session lists no skills at all, look in `.kiro/skills/` and read the `SKILL.md` files that apply directly. When
+you hand work to a sub-agent or a workflow step, name the files it should read: this file, any subfolder `AGENTS.md`
+that applies, and the skills the work needs. A session opened elsewhere does not inherit them.
 
 Deleting a skill is a supported thing to do, including the domain one. Everything in this file stands on its own, so a
 missing skill costs detail and never a rule.

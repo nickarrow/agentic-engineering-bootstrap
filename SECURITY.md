@@ -3,7 +3,7 @@
 For the conversation with a security office, a privacy officer, or whoever signs off on tools in your agency. You do
 not need this to get started. `README.md` covers the setup.
 
-Everything here was read from Kiro's own documentation in September 2026, except the two items marked as tested, which
+Everything here was read from Kiro's own documentation in September 2026, except the three items marked as tested, which
 were run on a live machine. Check the current documentation before you rely on any of it, because this moves.
 
 ## What happens to what you type

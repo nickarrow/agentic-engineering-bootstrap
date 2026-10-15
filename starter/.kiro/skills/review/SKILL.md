@@ -1,6 +1,6 @@
 ---
 name: review
-description: Use when asked to review work, when the user types /review, or before anything substantial ships. Fans out several reviewers in parallel, each anchored to a different source, then requires every finding to be confirmed against the file before it is acted on. Covers the four review mandates, how to report findings by severity, and why the reviewers must not share one source.
+description: Use when asked to review work, when the user types /review, or before anything substantial ships. Fans out several reviewers in parallel, each anchored to a different source, then requires every finding to be confirmed against the file before it is acted on. Covers the five review mandates, how to report findings by severity, and why the reviewers must not share one source.
 ---
 
 # Review protocol
@@ -16,8 +16,9 @@ That asymmetry is the whole reason to do this.
 
 ## Running it
 
-Invoke reviewers two at a time so they run in parallel, then the second pair. Give each one the file paths it needs.
-A reviewer that has to go looking will review the wrong thing. Cap each one's reply so it stays readable.
+Invoke reviewers two at a time so they run in parallel, and keep going two at a time until every mandate has run.
+Give each one the file paths it needs. A reviewer that has to go looking will review the wrong thing. Cap each one's
+reply so it stays readable.
 
 These mandates earned their place by finding things. They are not a fixed set and they are not a ceremony.
 
@@ -53,6 +54,20 @@ nothing.
 For code specifically, add: would a senior engineer be comfortable with this, looking at the whole repository rather
 than the diff? No constants, no tests on a critical path, a 900-line file, a type stuffed with data. The thing this is
 really guarding against is a future person having to debug something nobody understood when it was written.
+
+## Size it, and keep the record light
+
+Size the review to the change. A design, a plan, or a change to what the software does or says gets the full fan-out.
+A refactor that changes neither gets the do-it reviewer and the tests, and no more.
+
+Keep the working files in one folder per review under `.agents/`, named with the date and what it is for, which git
+ignores. One report per reviewer. Cite sources by link and date rather than saving a copy, unless a reviewer needs the
+copy to check a quote. No scripts unless they are going to be committed.
+
+When the review is done, the record goes into the Done entry in the epic's delivery plan, or into the commit message
+for a fix: which reviewers ran against which sources, how many findings, and where any decision went. Then the
+review's own folder goes; `.agents/` itself can stay, since git ignores it. The record never points at the scratch
+folder, because the scratch folder is about to not exist.
 
 ## Then do the hard part
 

@@ -17,8 +17,9 @@ these files were written for, and the routes below cover the other two.
 
 The worked examples in the domain layer are Medicaid, because that is the programme the author knows. The practice is
 not. If you work in education, justice, tax or anything else, delete `.kiro/skills/hhs-benefits/` and everything else
-still applies. Some fingerprints of the original audience remain in the filenames and in the example patterns in step
-three, and those are yours to rename.
+still applies. A field with its own rules gets its own skill in its place, each rule carrying its source and whether
+anyone has checked it. Some fingerprints of the original audience remain in the filenames and in the example patterns
+in step three, and those are yours to rename.
 
 ## Start here, depending on who you are
 
@@ -30,9 +31,9 @@ Three routes through this file, because three quite different people arrive at i
 | Never written code at all | Same route, but read "Words this uses" below first, and budget double |
 | Already a working engineer | Jump to `HOW-TO-WORK.md`, then `.kiro/skills/review/SKILL.md`, then come back for step three |
 
-The clock, for the first route. Twenty-six minutes to read this file, ten to copy the files in, five for the deny rule,
-three for the checks. About three quarters of an hour, plus five more if you have to make a repository first. Then the
-work starts, and that is a different afternoon.
+The clock, for the first route. Twenty-nine minutes to read this file, ten to copy the files in, five for the deny
+rule, three for the checks. About three quarters of an hour, plus five more if you have to make a repository first. Then
+the work starts, and that is a different afternoon.
 
 For the third route, the three things experienced developers most often have not met are the review fan-out, the
 deliberate session handoff, and making the agent the expert in a repository before you give it the task. Do step three
@@ -114,15 +115,19 @@ sending somebody the link is better than copying the file, because the link stay
 |---|---|
 | Repository | A folder of files with its history tracked. Your project |
 | Workspace | The folder you have open in Kiro. The agent can see everything in it, which is why what sits there matters |
+| Checkout | The copy of a repository on your machine that you open and edit. Usually your project folder, and usually the only one |
+| Worktree | A second checkout of the same repository in another folder, so two branches can be open at once. Rarely needed by one person |
 | Commit | A saved snapshot of changes, with a note about what changed. Local until you push it |
 | Push | Sending your commits up to GitHub. Nothing is on GitHub until you do |
 | Agent | The AI you are talking to. It reads and writes files and runs commands |
 | Sub-agent | A second agent the first sends off to do one job and report back |
+| Workflow step | One stage of a Kiro workflow, which splits a job into steps that each run in a session of their own |
 | Session | One chat conversation. Rules load when it starts, and it has a size limit |
 | Context | How much the agent is holding in mind at once. It fills up, and quality drops as it does |
 | Scaffold | Generating the empty skeleton of a project, folders and stub files. What you say no to early on |
 | Design document | A written record of what you are building and why, produced from a conversation. Not an APD or a business requirements document, though it can feed one |
-| Delivery plan | The order the work happens in, and the record of what is done. Your progress tracker |
+| Delivery plan | The order the work happens in, and the record of what is done. One per epic, and your progress tracker |
+| Epic | One body of work toward a goal you can say in a sentence, delivered as one or more increments. Each gets a numbered folder under `docs/epics/` |
 | Increment | One slice of the work that leaves something that runs. Smaller than a project, bigger than a task |
 | Decision record | One short dated file saying what was decided and why, kept rather than edited |
 | Skill | A folder under `.kiro/skills` holding instructions the agent loads only when they are relevant |
@@ -186,7 +191,8 @@ linked to your repository on GitHub. Nothing you do locally appears on GitHub un
 when it is about to.
 
 A brand new repository has nothing in it to document, so `missions/build-something-you-need.md` is the mission that fits.
-If you brought an existing project, `missions/document-a-system.md` is the one.
+If you brought an existing project, `missions/document-a-system.md` is the one, and its last section, "When the
+next job is changing the system", carries on from there.
 
 ## Before you point this at anything real
 
@@ -299,16 +305,17 @@ This is a different question from whether the files arrived, and it is worth doi
 can list five skills sitting on disk and still have none of them registered, because files in the wrong place or with
 the wrong heading are files rather than skills. The slash list is what proves Kiro picked them up.
 
-If they are not there, the practical effect is that `/review` does nothing and the agent works without the material in
-the other four. The rules in `AGENTS.md` still apply, so nothing unsafe follows from it. Three things to check, in the
-order they are likely.
+If they are not there, `/review` and `/stack` will not work as commands. `AGENTS.md` tells the agent to read the skill
+files directly when the session lists none, so the material still reaches it, but only when it goes looking. The rules
+in `AGENTS.md` still apply, so nothing unsafe follows from it. Three things to check, in the order they are likely.
 
 You copied the `starter` folder itself instead of the things inside it. Look for a folder called `starter` in your
 project: if it is there, move everything out of it up one level and delete it. This is the most common way this goes
 wrong, and it fails silently.
 
 The folder you opened in Kiro is the one above your project rather than your project. Kiro looks for `.kiro/skills/` at
-the top of whatever you opened, and it does not look in subfolders for skills, though it does for `AGENTS.md`. Tested.
+the top of whatever you opened, and it does not look in subfolders for skills. Tested. An `AGENTS.md` in a subfolder
+may not be in the session from its first message. It has been seen to arrive once a file in that folder was read.
 
 Each skill has to be its own folder under `.kiro/skills/` with a file called `SKILL.md` inside it, rather than five
 loose files.
@@ -334,7 +341,7 @@ Do this now rather than later. It gives you a point to come back to if the next 
 
 ### Then start working
 
-Read `HOW-TO-WORK.md`. Thirteen minutes, and it is the part that turns a configured repository into a way of working.
+Read `HOW-TO-WORK.md`. Fifteen minutes, and it is the part that turns a configured repository into a way of working.
 
 Then pick a mission. `missions/build-something-you-need.md` if you have an idea you want built, which also works from
 an empty repository. `missions/document-a-system.md` if you have an existing system nobody ever wrote down.
@@ -359,19 +366,21 @@ the top says what you hold, and `starter/NOTICE.md` repeats this in your own rep
 
 ### What has not been tested
 
-Most of what these files claim was checked by running it. Four things were not, and you are more likely than I am to hit
-the first two.
+Most of what these files claim was checked by running it. Four things were not, and you are more likely than I am to
+hit the first two.
 
-The Windows setup path. Every path, menu and command for Windows in this file was written from documentation and has
-never been run on a Windows machine. If you are on Windows and something here does not work, that is a defect in this
+Kiro on Windows ran the whole practice on a real project from 5 to 7 October 2026, adopted into an existing repository
+across five increments with the three documents and `/review`. The Windows setup steps themselves have still not been
+walked: the permissions file path, hidden files in File Explorer and the settings menu. That project held no sensitive
+data and left the data guard out. If you are on Windows and a setup step here does not work, that is a defect in this
 repository and not in your machine.
 
 Merging the deny rule into a permissions file that already has rules in it. `starter/DATA-GUARD.md` routes that through
 the agent and then has you count the rules afterwards, which is the right shape and has never been done by a person.
 Count them.
 
-The `writing-code` skill has never been prompted, so if it does not load when you start writing code, that is worth
-reporting rather than working around.
+The `writing-code` skill. Nothing records it loading during that Windows run, so if it does not load when you start
+writing code, report it rather than working around it.
 
 Nobody who did not write this has been through it end to end. If you are the first and you get stuck, that is the most
 useful thing anybody could tell me.

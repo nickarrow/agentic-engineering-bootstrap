@@ -59,8 +59,38 @@ The number is a symptom, not the goal. Cohesion is the goal. A file that is long
 genuinely large is better than four files that had one idea cut across them to get under a threshold. When a file is
 too long, look for the seam. If there is no seam, leave it and say so.
 
+Count every line, which is what `wc -l` gives. Do not quote the count after stripping blanks or comments and then plan
+against a different number. Comments are a fine reason to be over the range, and agents write verbose ones. Code is the
+signal.
+
 This applies to code. It does not apply to documents. A design document is one argument and splitting it loses the
 argument.
+
+## Once there is code, AGENTS.md gets a section on this repository
+
+A fresh repository has nothing to say about itself. Once there is code, add a short section to `AGENTS.md` saying what
+this project is, the commands to build it and run its tests, and where things live. Keep it to what stays true across
+sessions. Counts and dated notes do not go here: every session reads this file as current, so a stale line in it
+misleads every session until somebody fixes it.
+
+## Pin before you change answers people have already seen
+
+Before you change logic that produces answers a person has already seen, pin today's answers with tests first, so a
+change that moves one of them fails a test rather than passing silently. Then the decision record that ships with the
+change lists every answer that moved and why. The name for these is characterization tests, from Michael Feathers,
+*Working Effectively with Legacy Code* (2004): tests that record what the code does now, not what it should do, so you
+can tell when behaviour shifts. In a field test this caught a completed sports season whose champion changed under an
+engine rewrite, which nobody would have noticed from reading the diff.
+
+## Dependencies, because the agent installs them
+
+Pin exact versions rather than ranges, and commit the lockfile, so the build you tested is the build that ships and
+not whatever resolved that day. Before installing a package whose name you have not met, check that it is the real one.
+Models invent plausible package names, and attackers register the invented ones so that a mistaken install pulls their
+code. Spracklen et al., in "We Have a Package for You!" (USENIX Security 2025,
+[arXiv 2406.10279](https://arxiv.org/abs/2406.10279)), generated 576,000 code samples and found hallucinated package
+names averaging at least 5.2% of recommendations from commercial models and 21.7% from open-source ones, 205,474 unique
+invented names in all. The check is cheap: look the package up before the install command runs.
 
 ## Checking accessibility as you build
 

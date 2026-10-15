@@ -22,8 +22,31 @@ determination, requires a printable record, and requires a citation on every enc
 those four, and the sharper version for benefits work.
 
 Every published failure in this field has the same shape. A machine reached a legal conclusion from proxy data, nobody
-reviewed it, and the notice could not explain itself. Courts have ruled on the notice and the process more often than
-on the arithmetic.
+reviewed it, and the notice could not explain itself. In Idaho, the Ninth Circuit in 2015 affirmed a preliminary
+injunction against cutting home-based Medicaid budgets, set by a budget tool, without adequate notice: the notices did
+not say why a budget had gone down
+([K.W. v. Armstrong, 9th Cir. 2015](https://law.justia.com/cases/federal/appellate-courts/ca9/14-35296/14-35296-2015-06-05.html)).
+In Arkansas, over cuts to in-home care hours under ARChoices after the state's 2019 switch to a new assessment scored
+by an algorithm, the Eighth Circuit in 2022 held that beneficiaries have a clearly established right to adequate
+notice of a cut, upheld the denial of qualified immunity to state officials at the pleading stage, and let the claims
+go forward
+([Elder v. Gillespie, 8th Cir. 2022](https://law.justia.com/cases/federal/appellate-courts/ca8/21-1826/21-1826-2022-12-09.html)).
+In Tennessee, a federal district court in 2024 described pervasive flaws in the state's automated eligibility system, in
+the notices it generated, and in access to the hearings owed to people wrongly terminated
+([A.M.C. v. Smith, M.D. Tenn. 2024](https://healthlaw.org/resource/case-explainer-amc-v-smith/)).
+
+Run encoded rules in shadow against the existing system before they decide anything for a real person. Let the new
+rules compute an outcome while the current process makes the actual determination, compare the two, and read every
+difference as a question the new rules have to answer before they go live. A rule that agrees in testing can still
+diverge on the cases that matter, and shadow running is where that shows up without anyone losing coverage.
+
+A human reviewer is a safeguard only when the reviewer has the time to look, the information to understand what the
+system did, and the authority to overturn it. A reviewer who cannot say no is a rubber stamp with a person's name on
+it, and the count of refusals is how you tell the difference: if nobody ever overturns the system, the review is not
+real. CHAI's May 2026 Best Practice Guides for AI in Medicaid eligibility back human review of adverse actions, written
+to prevent inappropriate coverage loss as new requirements take effect
+([CHAI](https://chai.org/news/coalition-for-health-ai-chai-releases-best-practice-guides-for-responsible)). Anything
+here without a citation is the author's advice rather than a rule anyone has published.
 
 ## The notice matters as much as the number
 
@@ -36,7 +59,9 @@ and a person with no server-side copy of their own arrives with nothing.
 Accessibility carries more weight in this field than in most, because several benefit exclusion categories are
 disability-based, which turns an inaccessible interface into a discrimination question rather than a quality one.
 Consensus guidance for Medicaid eligibility work recommends WCAG 2.2 AA, which is stricter than either standard that
-binds, and the non-digital route is a requirement rather than a courtesy.
+binds, and the non-digital route is a requirement rather than a courtesy. CHAI's May 2026 guides pair the accessibility,
+multilingual and non-digital pathways with WCAG 2.2 AA, the ADA and Section 508
+([CHAI](https://chai.org/news/coalition-for-health-ai-chai-releases-best-practice-guides-for-responsible)).
 
 ## Label every number shown to a person
 

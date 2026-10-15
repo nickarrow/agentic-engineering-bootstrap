@@ -6,6 +6,62 @@ versions are dates rather than semantic versions, because nothing depends on thi
 The `writing-code` skill tells you to keep one of these, so this file exists partly to avoid asking for something these
 files do not do themselves.
 
+## Unreleased
+
+From using the bootstrap for three days on a real project, on Windows, adopted into a year-old repository rather than
+a fresh one.
+
+### Added
+
+- Epics. One body of work, one folder: `docs/epics/0001-first-version/` holds the first delivery plan, and each later
+  epic gets a numbered folder with its plan and, usually, a design document saying what it changes. `docs/design.md`
+  stays the one design document kept current, decisions stay in one list in `docs/decisions/`, a finished epic is
+  frozen, and a fix needs no epic. The layout works for a team as well as for one person: several people can work on
+  different epics, or different increments of one, against the same design document. If your plan is at
+  `docs/delivery-plan.md`, move it into `docs/epics/0001-<name>/` when your next epic starts.
+
+### Changed
+
+- A stated git workflow for one person: one branch per increment or fix, in the open folder, no worktree, the agent
+  running the git steps when you say. Pull requests are for teams and outside contributors. The field test reached for
+  a worktree and a pull request, which hid the work from its only reviewer.
+- Each increment's Done entry now fixes anything it made untrue in `AGENTS.md`, the skills, the README and the project
+  design document, and carries a short review line. The field test left seventeen stale lines in its always-on files.
+- Working files go in one folder per piece of work under `.agents/`, deleted when the work is done. The field test's
+  reached nearly 100 files.
+- If a session lists no skills, the agent reads the `SKILL.md` files directly, and a brief handed to a sub-agent names
+  the files it needs.
+- `document-a-system.md` now carries on into changing the system: a repository section in `AGENTS.md`, Current and
+  Inferred labels on the design document, and today's answers pinned with tests before logic changes.
+- Smaller: a second shape of domain skill in `CONTRIBUTING.md`, how to count file length, pinned dependency versions,
+  plan fields as headings, the IaC-Eval result in `stack`, and shadow running and real human review in `hhs-benefits`.
+
+### Fixed
+
+- The starter `.gitignore` silently ignored `.env.example`. It now keeps it, and ignores `.agents/` and `.worktrees/`.
+- The `hhs-benefits` sentence that set notice and process against arithmetic is replaced with what three courts held,
+  cited.
+- Counts and wording in the `review` skill, `CONTRIBUTING.md`, `SECURITY.md`, the build mission and the README's
+  reading time.
+- Corrections to the 2026.09.24 notes, recorded 2026-10-07: three uses of "worth knowing" stayed, not four, and a custom
+  agent loads steering and skills only when its configuration asks, rather than none of this loading.
+
+### Verified in use
+
+- The three documents held across five increments, and "Deliberately not" and "How you know it worked" did the most
+  work.
+- A decision record and the rule against silent changes put a changed past result in front of the owner before it
+  shipped.
+- `/review`, with the "do it" mandate, caught a contrast failure, a missing workflow label and a paging bug.
+
+### Still unverified
+
+- Whether a workflow step gets skills that sit at the top level.
+- The Windows setup steps: the permissions file path, hidden files in File Explorer, the settings menu.
+- Merging the deny rule into a permissions file that already has rules.
+- The `writing-code` skill. Nothing records it loading during the field test.
+- Anybody who did not write this going through it end to end.
+
 ## 2026.09.24
 
 The practice became the core, the domain became optional, and the files you copy moved into one folder. If you are on
