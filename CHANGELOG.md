@@ -6,10 +6,16 @@ versions are dates rather than semantic versions, because nothing depends on thi
 The `writing-code` skill tells you to keep one of these, so this file exists partly to avoid asking for something these
 files do not do themselves.
 
-## Unreleased
+## 2026.10.15
 
 From using the bootstrap for three days on a real project, on Windows, adopted into a year-old repository rather than
 a fresh one.
+
+If you adopted 2026.09.24, copy the new `starter/` files over yours the way the README describes, hidden `.kiro` folder
+included, but leave your `.gitignore` alone and keep any section you added to `AGENTS.md` about your own repository.
+Then add three lines from the new `starter/.gitignore` to yours: `.agents/`, `.worktrees/` and `!.env.example`, the
+last one after your own `.env` rules so that it wins. If your plan lives at `docs/delivery-plan.md`, it can stay there
+until your next epic starts.
 
 ### Added
 
