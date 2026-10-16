@@ -373,8 +373,8 @@ the top says what you hold, and `starter/NOTICE.md` repeats this in your own rep
 
 ### What has not been tested
 
-Most of what these files claim was checked by running it. Four things were not, and you are more likely than I am to
-hit the first two.
+Most of what these files claim was checked by running it. Five things were not, and the Windows one is the likeliest
+to reach you.
 
 Kiro on Windows ran the whole practice on a real project from 5 to 7 October 2026, adopted into an existing repository
 across five increments with the three documents and `/review`. The Windows setup steps themselves have still not been
