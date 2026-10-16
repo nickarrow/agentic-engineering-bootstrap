@@ -17,6 +17,11 @@ If something real has to be on this machine, it goes in `sensitive/`. The `.giti
 being committed. That is git, and git is not the agent: an uncommittable file is still perfectly readable. So the second
 thing is a rule that stops the agent reading it.
 
+Both work by folder name, and the rule below covers every project on this machine. So `sensitive` is a name for data and
+never for code. A code folder called `sensitive/` would be left out of this project's commits and hidden from the agent
+in every project, with no warning. If you already keep real data under another folder name, add that name to the deny
+rule and to your `.gitignore`, and keep it out of your code too.
+
 ## The rule
 
 Kiro keeps permission rules on your own machine, outside any repository, which is why this cannot ship already done.
@@ -46,8 +51,6 @@ rules:
     effect: deny
     match:
       - "**/sensitive/**"
-      - "**/phi/**"
-      - "**/pii/**"
   - capability: fs_read
     effect: ask
     match:
@@ -61,13 +64,12 @@ rules:
 
 ### If the file already has rules in it
 
-Do not paste the block. Merging YAML by hand goes wrong quietly, and the most
-common slip produces a file that is valid and has thrown your existing rules away. Instead, ask Kiro this:
+Do not paste the block. Merging YAML by hand goes wrong quietly, and the most common slip produces a file that is valid
+and has thrown your existing rules away. Instead, ask Kiro this:
 
 > Read my permissions file, then show me what it should look like with two more fs_read rules added: a deny on
-> `**/sensitive/**`, `**/phi/**` and `**/pii/**`, and an ask on `**/*extract*.csv`, `**/*member*.csv`,
-> `**/*claims*.csv`, `**/*beneficiary*`, `**/*.mdb` and `**/*.accdb`. Do not change my existing rules. Print the whole
-> file for me to copy.
+> `**/sensitive/**`, and an ask on `**/*extract*.csv`, `**/*member*.csv`, `**/*claims*.csv`, `**/*beneficiary*`,
+> `**/*.mdb` and `**/*.accdb`. Do not change my existing rules. Print the whole file for me to copy.
 
 Kiro can read that file even though it cannot write it. Copy what it prints, replace the contents, save.
 
@@ -104,7 +106,9 @@ It is enforced by Kiro on your machine, so somebody with administrator rights on
 server-side boundary and should not be described as one to a security office.
 
 The ask list matches on filenames, and these rules apply machine-wide, so it will occasionally prompt in unrelated work.
-That is the cost of putting them somewhere a cloned repository cannot weaken. Adjust both lists to your own naming.
+That is the cost of putting them somewhere a cloned repository cannot weaken. Saving an allow for one project will not
+quiet it, because Kiro's documentation says the strictest rule wins whichever permissions file it sits in. So adjust
+both lists to your own naming, and trim the ask list if it prompts more than it helps.
 
 ## The thing no rule here touches
 

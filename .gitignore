@@ -28,7 +28,7 @@ pii/
 # The fixture lives under starter/ and is governed by starter/.gitignore, which
 # re-includes it. Listed here too so that the rule above cannot swallow it if
 # anybody flattens the layout later.
-!starter/sensitive/FAKE-*.csv
+!starter/sensitive/FAKE-eligibility-extract.csv
 
 # Agent scratch and worktrees, never committed.
 .agents/

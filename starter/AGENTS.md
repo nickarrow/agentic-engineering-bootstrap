@@ -98,7 +98,8 @@ runs this properly and you should use it.
 For one person the git workflow is light. One branch per increment or per fix, in the checkout that is already open,
 not a worktree. The agent runs the git steps: branching, committing, merging. The person's part is to say when, and they
 can merge in the editor if they would rather. Show the commit message before committing. Push only when asked. No pull
-request for your own work. A team that reviews through pull requests says so here. Contributions from outside a public
+request for your own work: the review that replaces it is the fan-out above and the person's own read of the branch
+before it merges. A team that reviews through pull requests says so here. Contributions from outside a public
 repository still arrive as pull requests.
 
 ## How to write it down

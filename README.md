@@ -3,7 +3,7 @@
 Starter files for building software with an AI coding agent, on purpose rather than by luck, without handing it
 anything it should not see.
 
-Built for [Kiro](https://kiro.dev). Version 2026.10.15.
+Built for [Kiro](https://kiro.dev). Version 2026.10.16.
 
 Lives at [github.com/nickarrow/agentic-engineering-bootstrap](https://github.com/nickarrow/agentic-engineering-bootstrap).
 Setup below starts on that page, so if you are reading this from a folder on your machine, that is where to
@@ -174,6 +174,9 @@ Either way, check before moving on. You should be able to see `AGENTS.md` at the
 folder with `skills` inside it holding five folders, and a `.gitignore`. If `.kiro` or `.gitignore` is missing, the copy
 half worked and the guard is not in place. Go back and get them.
 
+If Kiro asks whether you trust this folder, say yes. Its documentation says it does not load a folder's skills or
+steering files until you do. No test so far has seen it ask, so it may not ask you.
+
 If your project already had a `.gitignore`, you now have a choice to make rather than a file to overwrite. Open both, and
 add the contents of mine to the end of yours. It is what stops anything in `sensitive/` from being committed.
 
@@ -275,11 +278,12 @@ In the chat panel, ask:
 It should come back with two lists, of what it may look at and what it must never look at. Those are in `AGENTS.md`,
 which you can open and compare against if you want to see where the answer came from.
 
-If nothing like that comes back, `AGENTS.md` is not being loaded and the rules in it are doing nothing. Two things to
-check. Start a new chat session, because these files load when a session starts. And look at which agent is selected: if
-it is a custom agent rather than Kiro's default, it does not pick up these files unless its own configuration asks for
-them, so switch back to the default. If it still does not work, stop here and raise an issue, because everything after
-this assumes the agent can see those rules.
+If nothing like that comes back, `AGENTS.md` is not being loaded and the rules in it are doing nothing. Three things to
+check. Start a new chat session, because these files load when a session starts. Look at which agent is selected: if it
+is a custom agent rather than Kiro's default, it does not pick up these files unless its own configuration asks for
+them, so switch back to the default. And if Kiro asked whether you trust this folder and you said no, trust it, because
+its documentation says it holds back an untrusted folder's steering files. If it still does not work, stop here and
+raise an issue, because everything after this assumes the agent can see those rules.
 
 ### Check two, the guard refuses
 
@@ -307,7 +311,7 @@ the wrong heading are files rather than skills. The slash list is what proves Ki
 
 If they are not there, `/review` and `/stack` will not work as commands. `AGENTS.md` tells the agent to read the skill
 files directly when the session lists none, so the material still reaches it, but only when it goes looking. The rules
-in `AGENTS.md` still apply, so nothing unsafe follows from it. Three things to check, in the order they are likely.
+in `AGENTS.md` still apply, so nothing unsafe follows from it. Four things to check, in the order they are likely.
 
 You copied the `starter` folder itself instead of the things inside it. Look for a folder called `starter` in your
 project: if it is there, move everything out of it up one level and delete it. This is the most common way this goes
@@ -316,6 +320,9 @@ wrong, and it fails silently.
 The folder you opened in Kiro is the one above your project rather than your project. Kiro looks for `.kiro/skills/` at
 the top of whatever you opened, and it does not look in subfolders for skills. Tested. An `AGENTS.md` in a subfolder
 may not be in the session from its first message. It has been seen to arrive once a file in that folder was read.
+
+Kiro asked whether you trust this folder and you said no. Its documentation says an untrusted folder's skills are not
+loaded. Trust the folder and start a new session.
 
 Each skill has to be its own folder under `.kiro/skills/` with a file called `SKILL.md` inside it, rather than five
 loose files.
@@ -375,9 +382,9 @@ walked: the permissions file path, hidden files in File Explorer and the setting
 data and left the data guard out. If you are on Windows and a setup step here does not work, that is a defect in this
 repository and not in your machine.
 
-Merging the deny rule into a permissions file that already has rules in it. `starter/DATA-GUARD.md` routes that through
-the agent and then has you count the rules afterwards, which is the right shape and has never been done by a person.
-Count them.
+Whether Kiro asks you to trust a folder, and what it holds back until you do. Its documentation says an untrusted
+folder's skills and steering files are not loaded, and no test so far has seen it ask. If it asks you, setup above says
+what to do, and telling me what it said would help.
 
 The `writing-code` skill. Nothing records it loading during that Windows run, so if it does not load when you start
 writing code, report it rather than working around it.

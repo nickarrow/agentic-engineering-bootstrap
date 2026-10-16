@@ -6,6 +6,53 @@ versions are dates rather than semantic versions, because nothing depends on thi
 The `writing-code` skill tells you to keep one of these, so this file exists partly to avoid asking for something these
 files do not do themselves.
 
+## 2026.10.16
+
+From adopting 2026.10.15 into a new project, which turned up five issues on its first day, #2 to #6.
+
+If you adopted 2026.10.15, copy the new `starter/` files over yours as before, leaving your own `.gitignore` alone and
+keeping any section you added to `AGENTS.md`. Then make two edits by hand, because these files are yours. In your
+`.gitignore`, change `!sensitive/FAKE-*.csv` to `!sensitive/FAKE-eligibility-extract.csv`. And unless you keep real
+data in folders called `phi/` or `pii/`, delete every line that names them, both in your `.gitignore` and in the deny
+rule in your permissions file. Kiro can print the edited permissions file for you to paste, the way `DATA-GUARD.md`
+describes. If you are coming from 2026.09.24, do the 2026.10.15 note below as well.
+
+### Fixed
+
+- The exception that lets the fake extract ship also let real files through. Macs ignore filename case, so
+  `!sensitive/FAKE-*.csv` re-included `fake-roster.csv`, and the wildcard re-included any real file named
+  `FAKE-something` whatever the case setting. It now names the one file exactly, in both `.gitignore` files (#2).
+- The guarded folder names also hid code. A module in `src/pii/` or `src/phi/` was left out of commits and refused to
+  the agent, in every project on the machine, because the deny rule matches those names everywhere. The only guarded
+  name is now `sensitive/`, and `DATA-GUARD.md` says a guarded name must never be used for a code folder (#3).
+
+### Changed
+
+- `DATA-GUARD.md` says why saving an allow for one project will not stop the ask prompts: Kiro's documentation says the
+  strictest rule wins whichever permissions file it sits in. It also says to trim the ask list if it prompts more than
+  it helps (#4).
+- The review skill runs any reviewer that drives something stateful on its own: a browser, a dev server on a fixed
+  port, a local database. Two parallel reviewers drove one browser and switched each other's pages. The browser note
+  in `writing-code` mentions `--isolated` and where the snapshot files collect (#5).
+- `AGENTS.md` says what replaces the pull request review when you work alone: the review fan-out and your own read of
+  the branch before it merges. This was the part of #1 the last release left out.
+- The README says to trust the folder if Kiro asks, in setup and in both troubleshooting lists. Kiro's documentation
+  says an untrusted folder's skills and steering files are not loaded. No test has seen Kiro ask yet.
+
+### Verified in use
+
+- Workflow steps get top-level skills. All 15 workflow sessions in one run saw the five skills and `AGENTS.md` (#6).
+- Merging the deny rule into a permissions file that already has rules works the way `DATA-GUARD.md` describes. The
+  agent wrote the merged file, a person pasted it in, three rules read back including the existing allow-all, and the
+  guard refused the fake file (#6).
+
+### Still unverified
+
+- The Windows setup steps: the permissions file path, hidden files in File Explorer, the settings menu.
+- Whether Kiro asks you to trust a folder, and what an untrusted folder holds back.
+- The `writing-code` skill loading.
+- Anybody who did not write this going through it end to end.
+
 ## 2026.10.15
 
 From using the bootstrap for three days on a real project, on Windows, adopted into a year-old repository rather than
