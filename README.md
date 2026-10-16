@@ -3,7 +3,7 @@
 Starter files for building software with an AI coding agent, on purpose rather than by luck, without handing it
 anything it should not see.
 
-Built for [Kiro](https://kiro.dev). Version 2026.10.16.
+Built for [Kiro](https://kiro.dev). Version 2026.10.17.
 
 Lives at [github.com/nickarrow/agentic-engineering-bootstrap](https://github.com/nickarrow/agentic-engineering-bootstrap).
 Setup below starts on that page, so if you are reading this from a folder on your machine, that is where to
@@ -31,9 +31,9 @@ Three routes through this file, because three quite different people arrive at i
 | Never written code at all | Same route, but read "Words this uses" below first, and budget double |
 | Already a working engineer | Jump to `HOW-TO-WORK.md`, then `.kiro/skills/review/SKILL.md`, then come back for step three |
 
-The clock, for the first route. Twenty-nine minutes to read this file, ten to copy the files in, five for the deny
-rule, three for the checks. About three quarters of an hour, plus five more if you have to make a repository first. Then
-the work starts, and that is a different afternoon.
+The clock, for the first route. Thirty minutes to read this file, ten to copy the files in, ten for the deny
+rule, three for the checks. About an hour, plus five more if you have to make a repository first. Then the work starts,
+and that is a different afternoon.
 
 For the third route, the three things experienced developers most often have not met are the review fan-out, the
 deliberate session handoff, and making the agent the expert in a repository before you give it the task. Do step three
@@ -46,24 +46,25 @@ installing it may mean asking whoever approves software, which is the first of t
 
 Everything in this file happens inside Kiro's chat panel unless it says otherwise.
 
-## Three things you may need someone else's permission for
+## What you may need from someone else first
 
-Read this before you start, because two of them sit outside what you can decide alone and you will hit them after
-you have spent the time rather than before.
+Read this before you start, because some of it sits outside what you can decide alone and you will hit it after you
+have spent the time rather than before.
 
-Kiro itself, installed, as above.
+Two things may need another person to approve them. Kiro itself, installed, as above, which on a locked-down machine is
+a request to whoever approves software. And git, installed and set up, which Kiro's clone step needs and which is the
+same kind of request. Later, when you start building the actual thing rather than planning it, you need a development
+toolchain too, which is a third such request. Everything up to a design document and a delivery plan needs none of that
+last one.
 
-A GitHub account, to get the files. Free, and your organisation may or may not allow one on a work machine or under a
-work email. Ask before you sign up rather than after. Sign up at [github.com](https://github.com) if the answer is yes.
+One thing is a question rather than an approval. A GitHub account, which you need to make a repository, to watch for
+new versions and to report a problem, though not to download the files, which are a public ZIP. It is free, and your
+organisation may or may not allow one on a work machine. Ask before you sign up, and sign up at
+[github.com](https://github.com) if the answer is yes.
 
-A decision about whether your repository is public or private. GitHub asks you at the moment you create one, and the
-default is not always what you want. A repository holding work for an employer should be private. This matters more
-than it looks: making it public is one click and undoing it does not unsay anything.
-
-A development toolchain, later. Everything up to and including a design document and a delivery plan needs nothing
-installed. The moment you start building the actual thing, you need software installed, and on a locked-down machine
-that is a request to whoever approves software. If the answer is going to be no, it is better to know that now, and the
-work you do before that point is still worth doing on its own.
+One thing is your own decision, and worth making deliberately. Whether your repository is public or private. GitHub
+asks at the moment you create one, and the default is not always what you want. A repository holding work for an
+employer should be private. Making it public is one click and undoing it does not unsay anything.
 
 ## What you get
 
@@ -79,7 +80,7 @@ skills. That is the whole thing.
 | `missions/document-a-system.md` | A first job if you have a system nobody wrote down |
 | `sensitive/FAKE-eligibility-extract.csv` | A fake data extract, for proving the guard works without touching real data. `sensitive/` is also where anything real goes |
 | `.gitignore` | What stops anything in `sensitive/` from being committed. Without it that folder is just a folder |
-| `NOTICE.md` | Where these files came from and how to hear about new versions. Delete it whenever you like |
+| `NOTICE.md` | Where these files came from, the licence they travel under, and how to hear about new versions. Keep it, or copy its licence text into your own `LICENSE` |
 
 And five skills in `.kiro/skills/`, which the agent loads only when they apply, so an unused one costs you nothing.
 
@@ -93,11 +94,10 @@ And five skills in `.kiro/skills/`, which the agent loads only when they apply, 
 
 Skills are for the agent. Missions are for you, and you read them. That is the difference.
 
-Worth understanding, because it is the part people misread. A skill is never fully switched off and never fully switched
-on. Every session starts with the agent knowing each skill's name and one-line purpose, and nothing more. When the work
+The part people misread is what a skill costs. A skill is never fully switched off and never fully switched on. Every session starts with the agent knowing each skill's name and one-line purpose, and nothing more. When the work
 matches one, the agent pulls in the whole file. So `hhs-benefits` sitting there costs you a sentence of the agent's
-attention until the moment you talk about benefits, and then it costs eight hundred words and is worth it. You can also
-force one with a slash command. You should not normally have to.
+attention until the moment you talk about benefits, and then it loads in full and earns its place. You can also force
+one with a slash command. You should not normally have to.
 
 ### The rest of this repository is not for copying
 
@@ -244,7 +244,7 @@ is identifiable, and a file that looks like a data extract is a different questi
 
 ### Three. A deny rule as a backstop
 
-For the case where something real does end up on your machine. Five minutes, and it is the only step outside your
+For the case where something real does end up on your machine. About ten minutes, and it is the only step outside your
 repository.
 
 The full instructions are in `starter/DATA-GUARD.md`, which you have just copied into your project. Open it and follow
@@ -255,7 +255,8 @@ rather than on my GitHub page.
 Three things from it before you go.
 
 Kiro keeps permission rules outside any repository, so nothing you clone can loosen them and a deny beats every other
-rule. Nobody can do this step for you, including Kiro, which is blocked from writing to its own settings.
+rule. Kiro cannot fill this file in for you: its file-writing tools are blocked from its own settings folder, though it
+can run a shell command to create an empty one, which is the step `starter/DATA-GUARD.md` walks you through.
 
 The deny covers folders you designate, which is why `sensitive/` exists. The second half of the rule is an ask rather
 than a deny, on data-shaped filenames, so a synthetic test file prompts once instead of being blocked. That interruption
@@ -353,7 +354,7 @@ Read `HOW-TO-WORK.md`. Fifteen minutes, and it is the part that turns a configur
 Then pick a mission. `missions/build-something-you-need.md` if you have an idea you want built, which also works from
 an empty repository. `missions/document-a-system.md` if you have an existing system nobody ever wrote down.
 
-Be realistic about the clock. Everything up to this point is about three quarters of an hour. A mission is another two to
+Be realistic about the clock. Everything up to this point is about an hour. A mission is another two to
 four hours on top, because the first step of either one is a long conversation and that is the point rather than an
 overhead. What a mission ends with is a design document and a delivery plan, not a running application. If you have an
 hour today, do the reading, the setup and the three checks, and come back for the mission when you have an afternoon.
@@ -373,7 +374,7 @@ the top says what you hold, and `starter/NOTICE.md` repeats this in your own rep
 
 ### What has not been tested
 
-Most of what these files claim was checked by running it. Five things were not, and the Windows one is the likeliest
+Most of what these files claim was checked by running it. Four things were not, and the Windows one is the likeliest
 to reach you.
 
 Kiro on Windows ran the whole practice on a real project from 5 to 7 October 2026, adopted into an existing repository

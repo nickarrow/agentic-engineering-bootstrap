@@ -122,7 +122,7 @@ with enhanced federal funding, ownership and licensing conditions attach to it a
 A short file of **contributing guidance**: how to propose a change, how to run the checks, and one feature per pull
 request rather than six. This matters more than usual when contractors and vendors will be the ones contributing.
 
-A **changelog**, in the [Keep a Changelog](https://keepachangelog.com/) shape, newest version first, with entries
+A **changelog**, loosely in the [Keep a Changelog](https://keepachangelog.com/) shape, newest version first, with entries
 grouped under Added, Changed, Deprecated, Removed, Fixed and Security. That source makes a point of deprecations in
 particular, because they are what a reader most needs warning about. Written for a person deciding whether to upgrade,
 not generated from commit subjects.

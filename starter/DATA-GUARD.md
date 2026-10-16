@@ -1,7 +1,7 @@
 # Keeping real data away from the agent
 
 Read this if you are working in this repository and have not set up the deny rule, or if you have just cloned it and
-somebody else did. Five minutes, once per machine.
+somebody else did. Ten minutes to read and do, once per machine.
 
 It matters because the protection is **per machine, not per repository**. Whoever set this up protected themselves.
 Nothing they did protects you. If you cloned this and skipped this file, the `sensitive/` folder is a folder with a
@@ -25,21 +25,30 @@ rule and to your `.gitignore`, and keep it out of your code too.
 ## The rule
 
 Kiro keeps permission rules on your own machine, outside any repository, which is why this cannot ship already done.
-Nothing you clone can loosen them, and a deny beats every other rule. It also means nobody can do this for you,
-including Kiro, which is not allowed to write to its own settings.
+Nothing you clone can loosen them, and a deny beats every other rule. It also means Kiro will not fill this file in for
+you: its file-writing tools are blocked from its own settings folder, the same way its file-reading tools are blocked
+from the folders the rule names. The shell is the exception, which is why the create step below works and why you still
+paste the contents by hand.
 
 The file is here:
 
 - Mac or Linux: `~/.kiro/settings/permissions.yaml`, where `~` is your home folder
 - Windows: `%USERPROFILE%\.kiro\settings\permissions.yaml`
 
-Ask Kiro in the chat panel to open that path. If it is not there, type this into the chat, including the first three
-words, and say yes when Kiro asks to run a command:
+Ask Kiro in the chat panel to open that path. If it opens, you can edit it in that tab. If it is not there yet, create
+it, then ask Kiro to open it.
+
+On Mac or Linux, type this into the chat, including the first three words, and say yes when Kiro asks to run a command:
 
 > Run this for me: mkdir -p ~/.kiro/settings && touch ~/.kiro/settings/permissions.yaml
 
-That makes an empty file. You type the contents yourself and save, because Kiro is blocked from writing here. If it
-offers and then fails, that is the protection working.
+On Windows, do the same with the PowerShell equivalent:
+
+> Run this for me: New-Item -ItemType Directory -Force "$env:USERPROFILE\.kiro\settings"; New-Item -ItemType File -Force "$env:USERPROFILE\.kiro\settings\permissions.yaml"
+
+Either one makes an empty file. You type the contents yourself and save. If Kiro opens the path but no editable tab
+appears, open the folder above in your file browser, `~/.kiro/settings` or `%USERPROFILE%\.kiro\settings`, and open the
+file from there. YAML cares about indentation, so keep the spacing exactly as the block below has it.
 
 ### If the file is empty
 
@@ -106,14 +115,17 @@ It is enforced by Kiro on your machine, so somebody with administrator rights on
 server-side boundary and should not be described as one to a security office.
 
 The ask list matches on filenames, and these rules apply machine-wide, so it will occasionally prompt in unrelated work.
-That is the cost of putting them somewhere a cloned repository cannot weaken. Saving an allow for one project will not
-quiet it, because Kiro's documentation says the strictest rule wins whichever permissions file it sits in. So adjust
-both lists to your own naming, and trim the ask list if it prompts more than it helps.
+The likeliest source is your own code: `**/*beneficiary*` has no extension, so it matches a `beneficiary-service.ts` or
+a `beneficiary/` folder as readily as a data file. That is the cost of putting these rules somewhere a cloned repository
+cannot weaken. Saving an allow for one project will not quiet it, because Kiro's documentation says the strictest rule
+wins whichever permissions file it sits in. So adjust both lists to your own naming, and trim the ask list where it
+prompts on code more than it catches data.
 
 ## The thing no rule here touches
 
 Anything typed or pasted into a chat window. No permission rule sees that, and in an office it is the likeliest way
 something sensitive leaves. Whether your prompts are used to improve the model depends on your Kiro account: an
-organisation-provided account is excluded automatically, and a free or individual one is opted in by default and has a
-checkbox under Settings, User, Application, Telemetry and Content. Worth checking before the rest of this, because a
-deny rule on a folder is worth little if everything you type goes somewhere you did not intend.
+account whose organisation subscribed it through an AWS account is excluded automatically. Any other account, including
+a free or individual one created on a work email, is opted in by default and has a checkbox under Settings, User,
+Application, Telemetry and Content. Check which you have before the rest of this, because a deny rule on a folder does
+little if everything you type goes somewhere you did not intend.

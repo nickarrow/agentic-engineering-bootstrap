@@ -9,9 +9,11 @@ The most valuable contribution is a report that something here does not work. Op
 and what happened. A step that failed on Windows, a menu that has moved, a command that no longer exists, a claim that
 is out of date. All of that is worth more to me than a compliment.
 
-Two gaps I already know about and would particularly like reports on. The Windows half of the setup was written from
-documentation and has never been run on a Windows machine. And nobody who did not write this has been through it end to
-end, so the first person who does and gets stuck is telling me the most important thing anyone has.
+Two gaps I already know about and would particularly like reports on. The Windows setup steps, the
+permissions file path, the hidden-file toggle and the settings menu, were written from documentation and have not been
+walked on a Windows machine, though the copy-and-build half of the practice has run on Windows. And nobody who did not
+write this has been through it end to end, so the first person who does and gets stuck is telling me the most important
+thing anyone has.
 
 ## Add a domain layer for your own field
 
@@ -60,8 +62,8 @@ and it was not obvious until somebody tested it.
 
 Two levels, and the split is the point.
 
-The top level is this project's own paperwork: this file, `README.md`, `CHANGELOG.md`, `SECURITY.md` and `LICENSE`. None
-of it travels.
+The top level is this project's own paperwork: this file, `README.md`, `CHANGELOG.md`, `SECURITY.md`, `LICENSE` and the
+top-level `.gitignore`. None of it travels.
 
 `starter/` is the payload. It is what somebody copies into their own project, so it must contain nothing about this
 project: no changelog, no copyright of mine, no issue tracker, no setup instructions.

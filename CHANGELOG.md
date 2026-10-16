@@ -6,6 +6,41 @@ versions are dates rather than semantic versions, because nothing depends on thi
 The `writing-code` skill tells you to keep one of these, so this file exists partly to avoid asking for something these
 files do not do themselves.
 
+## 2026.10.17
+
+A two-reviewer semantic review of the 2026.10.16 release, on two models, found a cluster of consistency and
+cold-read defects. These are the fixes. If you adopted 2026.10.16, copy the new `starter/` files over yours as before,
+leaving your own `.gitignore` and `AGENTS.md` alone. No permissions change this time.
+
+### Fixed
+
+- The 2026.10.16 tree shipped saying `Version 2026.10.16` with no changelog entry for the tag it carried. The version
+  line, `NOTICE.md` and a changelog entry are now part of the tagging step so the files cannot describe an earlier
+  release than the one they are in.
+- The untested list said four, then five, and listed four throughout. It says four and the four paragraphs follow.
+- The data-guard account rule in `DATA-GUARD.md` said any organisation-provided account is excluded from service
+  improvement. The real condition, in `README.md` and `SECURITY.md`, is narrower: subscribed through an organisation's
+  AWS account. An individual account on a work email is opted in. All three files now say the same thing.
+- `DATA-GUARD.md` gave only a POSIX `mkdir`/`touch` command to create the permissions file, directly under the Windows
+  path, so Windows had no route through the one required step. A PowerShell command sits beside it now.
+- The `hhs-benefits` cost figure in the README said eight hundred words. The file is now about 1,100, and the figure
+  drifted two releases ago. The README states the cost without a number that goes stale.
+- `phi/` and `pii/` lingered in the top-level `.gitignore` after being dropped as guarded names, so the changelog's
+  cleanup claim was not true inside this repository. Removed, and the data rules are anchored to this repository's root
+  so nothing under `starter/` can be caught by them.
+
+### Changed
+
+- The copy step in setup names which folder is open in Kiro before the prompt, and warns that an existing `.gitignore`
+  or `AGENTS.md` should be preserved rather than overwritten, before the copy rather than after it.
+- The permissions section separates what needs another person's approval, Kiro and git and later a toolchain, from the
+  GitHub account, which is a question, and the public-or-private choice, which is your own. Git is named as a
+  prerequisite, with its one-time identity setup, because the first commit fails without it.
+- `README.md`, `AGENTS.md` and the file map agree on the folder-trust prompt, the account rule, and that `NOTICE.md`
+  carries the licence rather than being freely deletable.
+- The `**/*beneficiary*` ask pattern is flagged as matching code, so the advice to trim the list has something concrete
+  to act on.
+
 ## 2026.10.16
 
 From adopting 2026.10.15 into a new project, which turned up five issues on its first day, #2 to #6.
