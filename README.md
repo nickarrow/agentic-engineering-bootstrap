@@ -3,7 +3,7 @@
 Starter files for building software with an AI coding agent, on purpose rather than by luck, without handing it
 anything it should not see.
 
-Built for [Kiro](https://kiro.dev). Version 2026.10.17.
+Built for [Kiro](https://kiro.dev). Version 2026.11.03.
 
 Lives at [github.com/nickarrow/agentic-engineering-bootstrap](https://github.com/nickarrow/agentic-engineering-bootstrap).
 Setup below starts on that page, so if you are reading this from a folder on your machine, that is where to

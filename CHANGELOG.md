@@ -6,7 +6,7 @@ versions are dates rather than semantic versions, because nothing depends on thi
 The `writing-code` skill tells you to keep one of these, so this file exists partly to avoid asking for something these
 files do not do themselves.
 
-## Unreleased
+## 2026.11.03
 
 Setup now asks Kiro to fetch the files. Nothing in `starter/` changed, so if you have already adopted 2026.10.17 there is
 nothing to copy.
