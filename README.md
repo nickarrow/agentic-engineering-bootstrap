@@ -143,55 +143,66 @@ this learned most of them. Branch, pull request, terminal and linter will all co
 
 ## Setting it up
 
-One path, whether or not you have a project already. If you do not have one yet, read the last part of this section
-first, because you need somewhere to put the files.
+The files come in the same way whether or not you have a project already. If you do not have one yet, read the last
+part of this section first, because you need somewhere to put them.
 
-### Get the files
+### Ask Kiro to bring the files in
 
-On this repository's GitHub page, press the green **Code** button, then **Download ZIP**, and unzip it wherever you like.
+This is how I start a project. Open your project folder in Kiro, start a new chat, and paste this:
 
-GitHub cannot download a single folder, so you get the whole thing and use one folder from it. Open the unzipped folder
-and look inside `starter/`. That is what you want. Everything beside it is this project's own paperwork.
+> This is the start of a project, in the folder you have open. Before we start on the work itself, go to
+> https://github.com/nickarrow/agentic-engineering-bootstrap and read it so you know what it is. Then bring everything
+> inside its `starter/` folder into the top level of this folder, including the hidden `.kiro` folder and `.gitignore`.
+> Do not overwrite anything already here, such as a `.gitignore` or an `AGENTS.md`: show me what you would add instead.
+> Then list what arrived, including hidden files, so I can check nothing was missed.
 
-### Put them in your project
+Kiro reads this repository, fetches the folder, lists what arrived, and usually runs the checks further down this page
+as well. Run them anyway.
 
-Two of the things in `starter/` begin with a dot, `.kiro` and `.gitignore`, and those two are the ones that do the
-protecting. A dot means your computer hides them, and it also means the obvious way to copy a folder's contents misses
-them silently and tells you it worked. So this step is worth doing carefully.
+The prompt names `.kiro` and `.gitignore` because those two do the protecting. A dot means your computer hides them,
+and the obvious way to copy a folder misses them silently and says it worked.
 
-To see them first: on a Mac, hold Command and Shift and press the period key. On Windows, open the View menu in File
-Explorer and turn on hidden items. Kiro's own file list shows them either way.
+### If Kiro cannot reach GitHub
 
-The safest way to do this is to ask Kiro, because it can see hidden files and will tell you what it did:
+Some work machines block it. Press the green **Code** button on this repository's GitHub page, then **Download ZIP**,
+unzip it, and ask Kiro:
 
-> Copy everything inside this folder, including the hidden files `.kiro` and `.gitignore`, into the top level of
-> [your project folder]. Then list what arrived, including hidden files, so I can check nothing was missed.
+> Copy everything inside [the unzipped starter folder], including the hidden `.kiro` and `.gitignore`, into the top
+> level of the folder you have open, without overwriting anything already here. Then list what arrived, including
+> hidden files.
 
-If you would rather drag files yourself, turn on hidden items first and take all eight things: `AGENTS.md`,
-`HOW-TO-WORK.md`, `DATA-GUARD.md`, `NOTICE.md`, the `missions` folder, the `sensitive` folder, `.kiro` and `.gitignore`.
+To copy them by hand instead, show hidden files first: Command, Shift and the period key on a Mac, or the View menu in
+File Explorer on Windows. Then take all eight things inside `starter/`, `.kiro` and `.gitignore` among them.
 
-Either way, check before moving on. You should be able to see `AGENTS.md` at the top level of your project, a `.kiro`
-folder with `skills` inside it holding five folders, and a `.gitignore`. If `.kiro` or `.gitignore` is missing, the copy
-half worked and the guard is not in place. Go back and get them.
+### Check what arrived
+
+Either way, check before moving on. You should see `AGENTS.md` at the top level of your project, a `.kiro` folder with
+`skills` inside it holding five folders, and a `.gitignore`, and nothing else from this repository: none of its
+top-level files, and no copy of the whole thing. If `.kiro` or `.gitignore` is missing, the copy half worked and the
+guard is not in place. Go back and get them.
 
 If Kiro asks whether you trust this folder, say yes. Its documentation says it does not load a folder's skills or
 steering files until you do. No test so far has seen it ask, so it may not ask you.
 
-If your project already had a `.gitignore`, you now have a choice to make rather than a file to overwrite. Open both, and
-add the contents of mine to the end of yours. It is what stops anything in `sensitive/` from being committed.
+If your project already had a `.gitignore`, add mine to the end of it, since that is what stops anything in
+`sensitive/` from being committed. If it already had an `AGENTS.md`, use mine, and keep what yours says about your
+project as a section at the end.
 
 There is no `LICENSE` in `starter/` on purpose, because mine would put my copyright on your work. `starter/NOTICE.md`
 carries the licence these files travel under, and is the one file here you are asked to keep or consciously replace.
 
 ### If you do not have a project yet
 
-Make one first, then do the two steps above.
+Make one first, then do the steps above.
 
 On GitHub, press the **plus** button at the top right and choose **New repository**. Name it, and choose **Private**
 unless you have decided otherwise, because this is where your work will sit. Create it. Then in Kiro choose **File**,
 then **Clone Repository**, and paste the address from your browser's address bar. Cloning makes a copy on your machine
 linked to your repository on GitHub. Nothing you do locally appears on GitHub until you push it, and Kiro will tell you
 when it is about to.
+
+Or start from an empty folder named for the project, open it in Kiro, and add "Git is not set up here yet" to the
+prompt. Kiro will set it up, and you make the GitHub repository, private, when you are ready to push.
 
 A brand new repository has nothing in it to document, so `missions/build-something-you-need.md` is the mission that fits.
 If you brought an existing project, `missions/document-a-system.md` is the one, and its last section, "When the

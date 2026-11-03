@@ -6,6 +6,27 @@ versions are dates rather than semantic versions, because nothing depends on thi
 The `writing-code` skill tells you to keep one of these, so this file exists partly to avoid asking for something these
 files do not do themselves.
 
+## Unreleased
+
+Setup now asks Kiro to fetch the files. Nothing in `starter/` changed, so if you have already adopted 2026.10.17 there is
+nothing to copy.
+
+### Changed
+
+- Setup starts by asking Kiro to fetch the starter files from this repository, which is how I now start projects.
+  Open the project folder, paste one prompt carrying this repository's address, and Kiro reads it, brings in `starter/`
+  with its hidden files, and lists what arrived. It has worked on about three projects. The ZIP download stays, for
+  machines that cannot reach GitHub.
+- Both prompts name the folder open in Kiro and tell it not to overwrite an existing `.gitignore` or `AGENTS.md`, and
+  the check after them says nothing else from this repository should arrive. Starting from an empty folder on your
+  machine, with Kiro setting up git, is described beside starting from a new GitHub repository.
+
+### Fixed
+
+- Correction to the 2026.10.17 notes, recorded 2026-11-03. That entry said the copy step named the open folder and
+  warned about an existing `.gitignore` or `AGENTS.md` before the copy. The README still warned after the copy, and only
+  about `.gitignore`. The new prompts make that entry true.
+
 ## 2026.10.17
 
 A two-reviewer semantic review of the 2026.10.16 release, on two models, found a cluster of consistency and
